@@ -1,0 +1,146 @@
+{% extends "base.html" %}{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Personal Diary</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+		
+		}
+
+		.container {
+			margin: 0 auto;
+			max-width: 1200px;
+			padding: 50px;
+			display: flex;
+			flex-wrap: wrap;
+			
+			align-items: center;
+			color: rgb(8, 6, 0);
+			background-color: rgb(215, 231, 252);
+		}
+
+		.left-panel {
+			flex-basis: 60%;
+			margin-right: 20px;
+		}
+
+		h1 {
+			font-size: 45px;
+			margin: 0 0 20px;
+		}
+
+		p {
+			font-size: 16px;
+			margin-bottom: 30px;
+		}
+
+		.right-panel {
+			flex-basis: 30%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 30px;
+		}
+
+		form {
+			max-width: 500px;
+			background-color: #fff;
+			border-radius: 10px;
+			padding: 50px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+
+		h3 {
+			text-align: center;
+			margin-top: 0;
+			margin-bottom: 20px;
+			font-size: 24px;
+		}
+
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		input[type="email"],
+		input[type="password"] {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			border-radius: 10px;
+			margin-bottom: 10px;
+		}
+
+		button[type="submit"] {
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+			width: 100%;
+			font-size: 18px;
+			font-weight: bold;
+			border: none;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #0069d9;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left-panel">
+			<h1>My Personal Diary</h1>
+			<p>A place to keep track of your daily thoughts and experiences.</p>
+			<p>My Personal Diary is a web-based application that allows users to create a digital diary where they can write down their thoughts, feelings, and experiences. It is a private space where users can store their memories, ideas, and personal reflections. The application is designed to be user-friendly, with a simple and intuitive interface that makes it easy to use. Users can create multiple entries, edit or delete them, and search through their entries by date or keywords. The diary is secured with a password, ensuring that only the user has access to their entries. Overall, My Personal Diary is a tool for self-reflection and introspection, allowing users to express themselves freely and privately.</p>
+		</div>
+		<div class="right-panel">
+			<form method="POST">
+				<h3>Login</h3>
+				<div class="form-group">
+					<label for="email">Email Address</label>
+					<input
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Enter email"
+						required
+					/>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input
+						type="password"
+						id="password"
+						name="password"
+						placeholder="Enter password"
+						required
+					/>
+				</div>
+				<button type="submit">Login</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "base.html" %}{% block title %}SignUp{% endblock %}
+
+{% block content %}
+<html>
+<head>
+	<title>My Personal Diary | Sign Up</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+		}
+		
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		}
+		
+		h3 {
+			margin-top: 0;
+			text-align: center;
+			color: #007bff;
+		}
+		
+		label {
+			font-weight: bold;
+			color: #333;
+		}
+		
+		.form-control {
+			display: block;
+			width: 100%;
+			padding: 0.375rem 0.75rem;
+			font-size: 1rem;
+			line-height: 1.5;
+			color: #495057;
+			background-color: #fff;
+			background-clip: padding-box;
+			border: 1px solid #ced4da;
+			border-radius: 0.25rem;
+			transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+		}
+		
+		.form-control:focus {
+			color: #495057;
+			background-color: #fff;
+			border-color: #80bdff;
+			outline: 0;
+			box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+		}
+		
+		.btn {
+			display: inline-block;
+			font-weight: 400;
+			color: #fff;
+			text-align: center;
+			vertical-align: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			background-color: #007bff;
+			border: 1px solid #007bff;
+			padding: 0.375rem 0.75rem;
+			font-size: 1rem;
+			line-height: 1.5;
+			border-radius: 0.25rem;
+			transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+		}
+		
+		.btn:hover {
+			color: #fff;
+			background-color: #0069d9;
+			border-color: #0062cc;
+		}
+		
+		.btn:focus {
+			outline: 0;
+			box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+		}
+		
+		.btn:active {
+			color: #fff;
+			background-color: #0062cc;
+			border-color: #005cbf;
+			box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+		}
+	</style>
+</head>
+<body>
+	<form method="POST">
+		<h3>Sign Up</h3>
+		<div class="form-group">
+			<label for="email">Email Address</label>
+	  <input
+		type="email"
+		class="form-control"
+		id="email"
+		name="email"
+		placeholder="Enter email"
+	  />
+	</div>
+	<div class="form-group">
+	  <label for="firstName">First Name</label>
+	  <input
+		type="text"
+		class="form-control"
+		id="firstName"
+		name="firstName"
+		placeholder="Enter first name"
+	  />
+	</div>
+	<div class="form-group">
+	  <label for="password1">Password</label>
+	  <input
+		type="password"
+		class="form-control"
+		id="password1"
+		name="password1"
+		placeholder="Enter password"
+	  />
+	</div>
+	<div class="form-group">
+	  <label for="password2">Password (Confirm)</label>
+	  <input
+		type="password"
+		class="form-control"
+		id="password2"
+		name="password2"
+		placeholder="Confirm password"
+	  />
+	</div>
+	<br />
+	<button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</body>
+</html>
+{% endblock %}
