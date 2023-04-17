@@ -10,7 +10,11 @@ views = Blueprint('views', __name__)
 @login_required
 def home():
 	# Set up a default diary entry
-	default_entry = {'title': 'My first entry', 'date': datetime.now().strftime('%Y-%m-%d'), 'body': 'This is my first diary entry'}
+	default_entry = {
+    'title': 'My first entry',
+    'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+    'body': 'This is my first diary entry'
+}
 	if request.method == 'POST':
 		# Get the form data
 		form_title = request.form.get('title')
@@ -33,9 +37,9 @@ def home():
 	# Get all diary entries for the current user
 	diary_entries = PersonalDiary.query.filter_by(user_id=current_user.id).all()
 
-	# Print each diary entry with its date and time
+	# Print each diary entry with its date and time/minus microseconds
 	for entry in diary_entries:
-		print(f"{entry.title} ({entry.date.strftime('%Y-%m-%d %H:%M:%S')})")
+		entry.date = entry.date.strftime('%Y-%m-%d %H:%M:%S')
 		print(f"{entry.body}\n")
 
 	# Combine the default entry with the user's entries
