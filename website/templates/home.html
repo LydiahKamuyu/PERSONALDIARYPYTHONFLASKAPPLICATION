@@ -116,28 +116,29 @@
 </head>
 <body>
   <h1>My Personal Diary</h1>
-  <ul class="list-group list-group-flush" id="personaldiary">
-	{% for diary in user.personaldiary %}
-	<li class="list-group-item">{{ diary.title, diary.date, diary.body}}</li>
-	{% endfor %}
-  </ul>
-
   <!-- Diary Entry Form -->
   <form id="diary" method="POST">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title">
-
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date">
 
     <label for="body">Body:</label>
     <textarea id="body" name="body" rows="10"></textarea>
 
     <input type="hidden" id="entry-id" name="entry-id" value="">
 
-    <iv align="center">
+    <div align="center">
 		<button type="submit" class="btn btn-primary">Save</button>
 	  </div>
+    
+    <ul class="list-group list-group-flush" id="personal_diary">
+      {% for entry in diary_entries %}
+          <li class="list-group-item">
+              <div class="entry-title">{{ entry.title }}</div>
+              <div class="entry-body">{{ entry.body }}</div>
+          </li>
+      {% endfor %}
+      </ul>    
+  
   </form>
 
 
