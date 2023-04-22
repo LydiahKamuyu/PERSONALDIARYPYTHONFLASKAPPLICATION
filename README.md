@@ -1,6 +1,8 @@
 # Personal Diary Flask Web App
 
-![](./screens/landing_page.png)
+[![Personal diary demo]          // Title
+(https://i.ytimg.com/vi/7v-oHO51IPw/maxresdefault.jpg)] 
+(https://www.youtube.com/watch?v=7v-oHO51IPw"Personal diary demo")   
 
 ## Built with :rocket:
 * Flask
