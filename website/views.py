@@ -46,3 +46,55 @@ def home():
 	all_entries = [default_entry] + diary_entries
 
 	return render_template("home.html", user=current_user, diary_entries=diary_entries)
+
+@views.route('/edit/<int:entry_id>', methods=['GET', 'POST'])
+@login_required
+def edit_entry(entry_id):
+    # Get the diary entry from the database
+    entry = PersonalDiary.query.get_or_404(entry_id)
+
+    # Check if the user is the owner of the diary entry
+    if entry.user_id != current_user.id:
+        flash('You are not authorized to edit this entry', category='error')
+        return redirect(url_for('views.home'))
+
+    if request.method == 'POST':
+        # Get the form data
+        form_title = request.form.get('title')
+        form_body = request.form.get('body')
+
+        # Check if the form data is valid
+        if len(form_title) <= 1 or len(form_body) <= 1:
+            flash('Input is too short', category='error')
+        else:
+            # Update the diary entry with the form data
+            entry.title = form_title
+            entry.body = form_body
+            entry.date = datetime.now()
+
+            # Commit the changes to the database and display a success message
+            db.session.commit()
+            flash('Successfully updated', category='success')
+
+            return redirect(url_for('views.home'))
+
+    return render_template("edit.html", user=current_user, entry=entry)
+
+
+@views.route('/delete/<int:entry_id>', methods=['GET', 'POST'])
+@login_required
+def delete_entry(entry_id):
+    # Retrieve the entry with the given entry_id
+    entry = PersonalDiary.query.filter_by(id=entry_id).first()
+
+    # Check if the entry exists
+    if not entry:
+        flash('Entry does not exist.', category='error')
+        return redirect(url_for('views.home'))
+
+    # Delete the entry from the database
+    db.session.delete(entry)
+    db.session.commit()
+
+    flash('Entry deleted successfully!', category='success')
+    return redirect(url_for('views.home'))

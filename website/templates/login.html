@@ -10,7 +10,6 @@
 		body {
 			background-color: #f2f2f2;
 			font-family: Arial, sans-serif;
-		
 		}
 
 		.container {
@@ -19,7 +18,6 @@
 			padding: 50px;
 			display: flex;
 			flex-wrap: wrap;
-			
 			align-items: center;
 			color: rgb(8, 6, 0);
 			background-color: rgb(215, 231, 252);
@@ -46,8 +44,6 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			align-items: center;
-			justify-content: center;
 			margin-bottom: 30px;
 		}
 
@@ -66,7 +62,7 @@
 			font-size: 24px;
 		}
 
-		.form-group {
+		 .form-group {
 			margin-bottom: 10px;
 		}
 
@@ -100,6 +96,24 @@
 
 		button[type="submit"]:hover {
 			background-color: #0069d9;
+		}
+
+		/* Media queries for responsive design */
+
+		@media (max-width: 768px) {
+			.container {
+				flex-direction: column;
+			}
+
+			.left-panel {
+				flex-basis: 100%;
+				margin-right: 0;
+				margin-bottom: 30px;
+			}
+
+			.right-panel {
+				flex-basis: 100%;
+			}
 		}
 	</style>
 </head>

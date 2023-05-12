@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Entry</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f8f8f8;
+		}
+		h1 {
+			font-size: 24px;
+			margin: 20px 0;
+		}
+		form {
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			padding: 20px;
+			margin-bottom: 20px;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		label {
+			display: block;
+			font-size: 16px;
+			margin-bottom: 5px;
+		}
+		input[type="text"], textarea {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			font-size: 16px;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 3px;
+			font-size: 16px;
+			cursor: pointer;
+			margin-top: 20px;
+		}
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+
+		/* Media Queries */
+
+		@media screen and (max-width: 767px) {
+			form {
+				padding: 10px;
+			}
+			h1 {
+				font-size: 20px;
+			}
+			input[type="submit"] {
+				padding: 8px 16px;
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			form {
+				padding: 20px;
+			}
+			h1 {
+				font-size: 28px;
+			}
+			input[type="submit"] {
+				padding: 10px 20px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h1>Edit Entry</h1>
+	<form method="POST">
+		<label>Title</label>
+		<input type="text" name="title" value="{{ entry.title }}">
+
+		<label>Body</label>
+		<textarea name="body" rows="10">{{ entry.body }}</textarea>
+
+		<input type="submit" value="Save">
+	</form>
+</body>
+</html>
+
+
+{% endblock %}
