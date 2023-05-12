@@ -21,15 +21,16 @@
 
     form {
       margin: 0 auto;
-      max-width: 900px;
+      max-width: 1600px;
       padding: 20px;
-      border: 1px solid #ccc;
+      border: 1px solid rgb(199, 226, 232);
       border-radius: 5px;
       box-shadow: 0 0 10px #ccc;
       display: grid;
-      grid-template-columns:3fr 3fr;
-      place-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 10px;
+      justify-items: center;
+      background-color: #f4f7f8;
     }
 
     label {
@@ -128,6 +129,80 @@
       margin-top: 20px;
       text-align: right;
     }
+
+    /* Responsive styles */
+@media screen and (max-width: 768px) {
+  /* Adjust the grid layout */
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  /* Make the table scrollable */
+  .table-section {
+    height: auto;
+    overflow-y: scroll;
+  }
+
+  /* Adjust font sizes */
+  h1 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  input[type="text"], input[type="date"], textarea {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .entry-title {
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+
+  .entry-date {
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+
+  .entry-body {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .entry-actions button {
+    font-size: 14px;
+    margin-right: 3px;
+  }
+
+  /* Center the form actions */
+  .form-actions {
+    text-align: center;
+  }
+  td a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  color: #333;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+td a:hover {
+  background-color: #ddd;
+}
+}
   </style>
 </head>
 <body>
@@ -154,33 +229,38 @@
     
     <section class="table-section">
     
-    <table class="table">
-      <thead class="table-header">
-        <tr>
-          <!-- <center> -->
+      <table class="table">
+        <thead class="table-header">
+          <tr>
+            <!-- <center> -->
             <h3>All Notes</h3>
-          <!-- </center> -->
-        </tr>
-        <tr>
-          <th>Date</th>
-          <th>Title</th>
-          <th>Body</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for entry in diary_entries %}
-          <tr> 
+            <!-- </center> -->
+          </tr>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in diary_entries %}
+          <tr>
             <td>{{ entry.date }}</td>
             <td>{{ entry.title }}</td>
             <td>{{ entry.body }}</td>
+             <td>
+      <a href="{{ url_for('views.edit_entry', entry_id=entry.id) }}">Edit</a></td>
+      <td><a href="{{ url_for('views.delete_entry', entry_id=entry.id) }}">Delete</a>
+      </td>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+          {% endfor %}
+        </tbody>
+      </table>
     </section>
     
 
   </form>
 
-
+</body>
+</html>
 {% endblock %}
